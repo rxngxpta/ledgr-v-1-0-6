@@ -68,8 +68,8 @@ with st.form("Select a Security Ticker "):
     if submitted:
         pass
 df = getdata(stock)
-df.reset_index([0])
-
+# df.reset_index([0])
+st.write(df)
 ind = df.index
 ind = ind.tz_convert(None)
 open = df['Open']
