@@ -46,6 +46,7 @@ def getdata(stock):
     stock = stock + ".NS"
     stock = yf.Ticker(stock)
     df = stock.history(period='max')
+    df = df(headers=[0])
     return df
 
 
