@@ -78,9 +78,9 @@ with st.form("Select a Security Ticker "):
         lo = df[['Low']]
         close = df[['Close']]
         prof_df_close = pd.DataFrame({"ds": ind, "y": close})
-        # prof_df_close
+        prof_df_close
         prof_df_close = prof_df_close.reset_index()
-        # prof_df_close
+        prof_df_close
         # Pagework 2 - Forecasting  ###################################################
         
         m = Prophet()
