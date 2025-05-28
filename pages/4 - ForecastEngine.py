@@ -46,7 +46,6 @@ def getdata(stock):
     stock = stock + ".NS"
     stock = yf.Ticker(stock)
     df = stock.history(period='max')
-    df.reset_index([0])
     return df
 
 # Icons and Links ###########################
@@ -129,10 +128,7 @@ with k3:
 
 with st.container():
     st.plotly_chart(a, use_container_width=True)
-#    with st.expander("Get Forecast Data Here!"):
-
-#        st.write(forecast_year.iloc[-150:])        st.write(forecast_year.iloc[-100:])
-
+st.write("  ---------------------------------------------------------------  ")
 with st.container():
     st.plotly_chart(c, use_container_width=True)
 
