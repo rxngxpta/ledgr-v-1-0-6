@@ -69,7 +69,7 @@ with st.form("Select a Security Ticker "):
         pass
 df = getdata(stock)
 #df.reset_index([0])
-st.write(df)
+#st.write(df)
 ind = df.index
 ind = ind.tz_convert(None)
 open = df['Open']
@@ -78,7 +78,8 @@ lo = df['Low']
 close = df['Close']
 prof_df_close = pd.DataFrame({"ds": [ind], "y": [close]})
 prof_df_close
-prof_df_close = prof_df_close.reset_index()
+#prof_df_close = prof_df_close.reset_index()
+prof_df_close = prof_df_close["ds", "y"]
 prof_df_close
 # Pagework 2 - Forecasting  ###################################################
 
