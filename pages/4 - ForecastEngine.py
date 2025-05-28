@@ -153,7 +153,7 @@ url_insta ='https://www.instagram.com/alphaledgr/'
 url_blog = 'https://www.alphaledgr.com/Blog'
 url_linkedin = "https://www.linkedin.com/company/ledgrapp/"
 st.write("  ---------------------------------------------------------------  ")
-column1, column2, column3, column4, column5 = st.columns([1, 1, 1, 2 , 1])
+column1, column2, column3, column4, column5 = st.columns([1, 1, 1, 1, 1])
 with column1:
     st.image(ytube, '[Ledgr\'s YouTube Channel](%s)' % url_ytube)
 with column2:
