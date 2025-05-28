@@ -16,8 +16,8 @@ import plotly.express as px
 import plotly.graph_objects as go
 import streamlit as st
 import yfinance as yf
-import matplotlib as plt
-import seaborn as sns
+# import matplotlib as plt
+# import seaborn as sns
 from prophet import Prophet
 from prophet.plot import plot_plotly, plot_components_plotly
 import os
@@ -48,7 +48,9 @@ def getdata(stock):
     df = stock.history(period='max')
     return df
 
+
 # Icons and Links ###########################
+
 ytube = f"{direc}/pages/appdata/imgs/ytube.svg"
 fbook = f"{direc}/pages/appdata/imgs/fbook.svg"
 insta = f"{direc}/pages/appdata/imgs/insta.svg"
@@ -63,25 +65,28 @@ with fc2:
     st.video('https://youtu.be/tqOWAGEnKKQ?si=yW1nz3AVFKvUxGjA')
 st.write("    -----------------------------------------------------------    ")
 with st.form("Select a Security Ticker "):
-    stock = st.selectbox("Please Select a Security Symbol for further analyses: ", tickerlist)
+    stock = st.selectbox("Please Select a Security Symbol for further analyses: ",
+    tickerlist)
     submitted = st.form_submit_button("Proceed >>>")
     if submitted:
         pass
+
+
 df = getdata(stock)
-#df.reset_index([0])
-#st.write(df)
+df.reset_index([0])
+# df
+
+
 ind = df.index
-#ind = ind.tz_convert(None)
+ind = ind.tz_convert(None)
 open = df['Open']
 hi = df['High']
 lo = df['Low']
 close = df['Close']
-prof_df_close = pd.DataFrame({"ds": [ind], "y": [close]})
-prof_df_close
-#prof_df_close = prof_df_close.reset_index()
-#prof_df_close = prof_df_close["ds", "y"]
-#prof_df_close
-# Pagework 2 - Forecasting  ###################################################
+prof_df_close = pd.DataFrame({"ds": ind, "y": close})
+# prof_df_close
+prof_df_close = prof_df_close.reset_index()
+# prof_df_close
 
 m = Prophet()
 
@@ -113,7 +118,6 @@ c.update_layout(legend=dict(
     y=1.02,
     xanchor="right", x=1
     ))
-pass
 st.write("  ---------------------------------------------------------------  ")
 
 k1, k2, k3 = st.columns([4, 3, 4])
@@ -126,7 +130,6 @@ with k3:
 
 with st.container():
     st.plotly_chart(a, use_container_width=True)
-st.write("  ---------------------------------------------------------------  ")
 with st.container():
     st.plotly_chart(c, use_container_width=True)
 
