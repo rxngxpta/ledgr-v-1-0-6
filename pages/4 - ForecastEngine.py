@@ -16,8 +16,8 @@ import plotly.express as px
 import plotly.graph_objects as go
 import streamlit as st
 import yfinance as yf
-# import matplotlib as plt
-# import seaborn as sns
+import matplotlib as plt
+import seaborn as sns
 from prophet import Prophet
 from prophet.plot import plot_plotly, plot_components_plotly
 import os
@@ -56,7 +56,7 @@ ytube = f"{direc}/pages/appdata/imgs/ytube.svg"
 fbook = f"{direc}/pages/appdata/imgs/fbook.svg"
 insta = f"{direc}/pages/appdata/imgs/insta.svg"
 linkedin = f"{direc}/pages/appdata/imgs/linkedin.svg"
-ledgrblog = f"{direc}/pages/appdata/imgs/Ledgr_Logo_F1.png"
+ledgrblog = f"{direc}/pages/appdata/imgs/Ledgr_Logo_F2.png"
 fc1, fc2 = st.columns(2)
 with fc1:
     st.title(":Forecast Engine:")
