@@ -113,6 +113,7 @@ with st.form("Select a Security Ticker "):
             y=1.02,
             xanchor="right", x=1
             ))
+        pass
 st.write("  ---------------------------------------------------------------  ")
 
 k1, k2, k3 = st.columns([4, 3, 4])
