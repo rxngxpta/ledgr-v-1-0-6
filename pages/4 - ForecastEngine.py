@@ -77,14 +77,12 @@ with st.form("Select a Security Ticker "):
 
 df = getdata(stock)
 df.reset_index([0])
-# df
-
 
 ind = df.index
 ind = ind.tz_convert(None)
-open = df['Open']
-hi = df['High']
-lo = df['Low']
+open = df[['Open']]
+hi = df[['High']]
+lo = df[['Low']]
 close = df['Close']
 prof_df_close = pd.DataFrame({"ds": ind, "y": close})
 # prof_df_close
