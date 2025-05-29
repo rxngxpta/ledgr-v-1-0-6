@@ -13,12 +13,14 @@ import os
 import streamlit as st
 
 direc = os.getcwd()
-ytube = f'{direc}/pages/appdata/imgs/ytube.svg'
-fbook = f'{direc}/pages/appdata/imgs/fbook.svg'
-insta = f'{direc}/pages/appdata/imgs/insta.svg'
-linkedin = f'{direc}/pages/appdata/imgs/linkedin.svg'
-ledgrblog = f'{direc}/pages/appdata/imgs/Ledgr_Logo_F1.png'
-tickerfile = f"{direc}/pages/appdata/tickerlist_y.csv"
+
+
+ytube = '/pages/appdata/imgs/ytube.svg'
+fbook = '/pages/appdata/imgs/fbook.svg'
+insta = '/pages/appdata/imgs/insta.svg'
+linkedin = '/pages/appdata/imgs/linkedin.svg'
+ledgrblog = '/pages/appdata/imgs/Ledgr_Logo_F1.png'
+tickerfile = "/pages/appdata/tickerlist_y.csv"
 tickerdb = pd.read_csv(tickerfile)
 tickerlist = tickerdb["SYMBOL"]
 st.subheader("User Inputs")
