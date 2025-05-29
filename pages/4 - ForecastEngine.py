@@ -38,9 +38,9 @@ with st.form("user_inputs"):
     submitted = st.form_submit_button("Proceed")
     if submitted:
         stock = stock2 + ".NS"
+        st.write(stock)
+        df = getdata(stock)
         pass
-
-st.write(stock)
 
 # Functions & Cached Resources ################################################
 # df.reset_index([0])
