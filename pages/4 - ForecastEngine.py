@@ -11,6 +11,9 @@ from prophet import Prophet
 from prophet.plot import plot_plotly, plot_components_plotly
 import os
 
+tickerfile = f"{direc}/pages/appdata/tickerlist_y.csv"
+tickerdb = pd.read_csv(tickerfile)
+tickerlist = tickerdb["SYMBOL"]
 st.subheader("User Inputs")
 stock = st.selectbox("Please Select a Security Symbol for further analyses: ",
                      tickerlist)
@@ -63,8 +66,6 @@ c.update_layout(legend=dict(
     xanchor="right", x=1
 ))
 st.write("  ---------------------------------------------------------------  ")
-
-
 k1, k2, k3 = st.columns([4, 3, 4])
 with k1:
     st.write(" ")
@@ -78,7 +79,6 @@ with st.container():
 st.write("  ---------------------------------------------------------------  ")
 with st.container():
     st.plotly_chart(c, use_container_width=True)
-
 st.write("  ---------------------------------------------------------------  ")
 with st.container():
     j1, j2, j3 = st.columns([3, 4, 3])
@@ -88,7 +88,6 @@ with st.container():
         st.subheader(f"{stock} Price Trajectory")
     with j3:
         st.write(" ")
-
 st.plotly_chart(b, use_container_width=True)
 # #####################################################################
 url_ytube = "https://www.youtube.com/@LedgrInc"
