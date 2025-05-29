@@ -13,6 +13,14 @@ import os
 import streamlit as st
 
 direc = os.getcwd()
+
+@st.cache_data
+def getdata(stock):
+    stock = yf.Ticker(stock)
+    df = stock.history(period='max')['Close']
+    return df
+
+
 ytube = f"{direc}/pages/appdata/imgs/ytube.svg"
 fbook = f"{direc}/pages/appdata/imgs/fbook.svg"
 insta = f"{direc}/pages/appdata/imgs/insta.svg"
@@ -24,12 +32,6 @@ pathtkr = f"{direc}/pages/appdata/tickerlist_y.csv"
 
 tickerdb = pd.read_csv(pathtkr)
 tickerlist = tickerdb["SYMBOL"]
-@st.cache_data
-def getdata(stock):
-    stock = yf.Ticker(stock)
-    df = stock.history(period='max')['Close']
-    return df
-
 st.subheader("User Inputs")
 with st.form("user_inputs"):
     stock2 = st.selectbox("Please Select a Security Symbol for further analyses: ", tickerlist)
