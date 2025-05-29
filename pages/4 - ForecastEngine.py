@@ -68,7 +68,7 @@ stock = st.selectbox("Please Select a Security Symbol for further analyses: ",
 tickerlist)
 stock = stock + ".NS"
 
-df = getdata(stock)
+df = getdata(f'{stock}')
 df.reset_index([0])
 # df
 
