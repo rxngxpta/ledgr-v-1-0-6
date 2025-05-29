@@ -19,7 +19,8 @@ def getdata(stock):
     stock = yf.Ticker(stock)
     df = stock.history(period='max')['Close']
     return df
-
+        
+df = getdata(stock)
 
 ytube = f"{direc}/pages/appdata/imgs/ytube.svg"
 fbook = f"{direc}/pages/appdata/imgs/fbook.svg"
