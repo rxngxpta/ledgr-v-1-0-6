@@ -43,8 +43,6 @@ with st.form("user_inputs"):
 st.write(stock)
 
 # Functions & Cached Resources ################################################
-stock_ticker = yf.ticker(stock)
-st.write(stock_ticker)
 # df.reset_index([0])
 st.write(df)
 
