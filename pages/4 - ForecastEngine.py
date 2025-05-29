@@ -20,7 +20,7 @@ fbook = f'{direc}/pages/appdata/imgs/fbook.svg'
 insta = f'{direc}/pages/appdata/imgs/insta.svg'
 linkedin = f'{direc}/pages/appdata/imgs/linkedin.svg'
 ledgrblog = f'{direc}/pages/appdata/imgs/Ledgr_Logo_F1.png'
-tickerfile = f'{direc}pages/appdata/tickerlist_y.csv'
+tickerfile = f'{direc}/pages/appdata/tickerlist_y.csv'
 tickerdb = pd.read_csv(tickerfile)
 tickerlist = tickerdb["SYMBOL"]
 @st.cache_data
