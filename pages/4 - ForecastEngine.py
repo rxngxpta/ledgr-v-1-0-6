@@ -54,7 +54,7 @@ ytube = f"{direc}/pages/appdata/imgs/ytube.svg"
 fbook = f"{direc}/pages/appdata/imgs/fbook.svg"
 insta = f"{direc}/pages/appdata/imgs/insta.svg"
 linkedin = f"{direc}/pages/appdata/imgs/linkedin.svg"
-ledgrblog = f"{direc}/pages/appdata/imgs/Ledgr_Logo_F1.png"
+ledgrblog = f"{direc}/pages/appdata/imgs/Ledgr_Logo_F2.png"
 fc1, fc2 = st.columns(2)
 with fc1:
     st.title(":Forecast Engine:")
@@ -64,14 +64,11 @@ with fc2:
     st.video('https://youtu.be/tqOWAGEnKKQ?si=yW1nz3AVFKvUxGjA')
 st.write("    -----------------------------------------------------------    ")
 st.header("This page is under the works and shall be open soon!")
-
-
-
 st.write("  ---------------------------------------------------------------  ")
 url_ytube = "https://www.youtube.com/@LedgrInc"
 url_fb = "https://www.facebook.com/share/1BnXaYvRzV/"
 url_insta ='https://www.instagram.com/alphaledgr/'
-url_blog = 'https://www.alphaledgr.com/Blog'
+url_blog = 'https://www.alphaledgr.com/blog'
 url_linkedin = "https://www.linkedin.com/company/ledgrapp/"
 st.write("  ---------------------------------------------------------------  ")
 column1, column2, column3, column4, column5 = st.columns([1, 1, 1, 2 , 1])
