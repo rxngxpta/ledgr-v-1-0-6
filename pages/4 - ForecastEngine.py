@@ -23,6 +23,12 @@ ledgrblog = f'{direc}/pages/appdata/imgs/Ledgr_Logo_F1.png'
 tickerfile = f'{direc}pages/appdata/tickerlist_y.csv'
 tickerdb = pd.read_csv(tickerfile)
 tickerlist = tickerdb["SYMBOL"]
+@st.cache_data
+def getdata(stock):
+    stock = yf.Ticker(stock)
+    df = stock.history(period='max')['Close']
+    return df
+
 st.subheader("User Inputs")
 with st.form():
     stock2 = st.selectbox("Please Select a Security Symbol for further analyses: ", tickerlist)
@@ -34,16 +40,9 @@ with st.form():
 st.write(stock)
 
 # Functions & Cached Resources ################################################
-@st.cache_data
-def getdata(stock):
-    stock = yf.Ticker(stock)
-    df = stock.history(period='max')['Close']
-    return df
-
-
 df = getdata(f'{stock}')
 # df.reset_index([0])
-df
+st.write(df)
 
 
 ind = df.index
