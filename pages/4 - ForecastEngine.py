@@ -24,8 +24,14 @@ tickerfile = "/pages/appdata/tickerlist_y.csv"
 tickerdb = pd.read_csv(tickerfile)
 tickerlist = tickerdb["SYMBOL"]
 st.subheader("User Inputs")
-stock2 = st.selectbox("Please Select a Security Symbol for further analyses: ", tickerlist)
-stock = stock2 + ".NS"
+with st.form():
+    stock2 = st.selectbox("Please Select a Security Symbol for further analyses: ", tickerlist)
+    submitted = st.form_submit_button("Proceed")
+    if submitted:
+        stock = stock2 + ".NS"
+        pass
+
+st.write(stock)
 
 # Functions & Cached Resources ################################################
 @st.cache_data
