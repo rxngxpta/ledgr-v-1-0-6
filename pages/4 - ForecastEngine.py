@@ -75,30 +75,7 @@ with k3:
 
 with st.container():
     st.plotly_chart(a, use_container_width=True)
-with st.container():
-    st.plotly_chart(c, use_container_width=True)
-
 st.write("  ---------------------------------------------------------------  ")
-with st.container():
-    j1, j2, j3 = st.columns([3, 4, 3])
-    with j1:
-        st.write(" ")
-    with j2:
-        st.subheader(f"{stock} Price Trajectory")
-    with j3:
-        st.write(" ")
-
-st.plotly_chart(b, use_container_width=True)
-k1, k2, k3 = st.columns([4, 3, 4])
-with k1:
-    st.write(" ")
-with k2:
-    st.subheader("Forecast Plot")
-with k3:
-    st.write(" ")
-
-with st.container():
-    st.plotly_chart(a, use_container_width=True)
 with st.container():
     st.plotly_chart(c, use_container_width=True)
 
