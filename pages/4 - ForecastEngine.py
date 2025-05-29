@@ -37,7 +37,7 @@ start_date = dt.datetime(2020, 1, 1)
 end_date = dt.datetime.today()
 pathtkr = f"{direc}/pages/appdata/tickerlist_y.csv"
 tickerdb = pd.read_csv(pathtkr)
-tickerlist = tickerdb["Symbol"]
+tickerlist = tickerdb["SYMBOL"]
 
 # Functions & Cached Resources ################################################
 
