@@ -15,12 +15,12 @@ import streamlit as st
 direc = os.getcwd()
 
 
-ytube = f'{direc}/pages/appdata/imgs/ytube.svg'
-fbook = f'{direc}/pages/appdata/imgs/fbook.svg'
-insta = f'{direc}/pages/appdata/imgs/insta.svg'
-linkedin = f'{direc}/pages/appdata/imgs/linkedin.svg'
-ledgrblog = f'{direc}/pages/appdata/imgs/Ledgr_Logo_F1.png'
-tickerfile = f'{direc}/pages/appdata/tickerlist_y.csv'
+ytube = f"{direc}/pages/appdata/imgs/ytube.svg"
+fbook = f"{direc}/pages/appdata/imgs/fbook.svg"
+insta = f"{direc}/pages/appdata/imgs/insta.svg"
+linkedin = f"{direc}/pages/appdata/imgs/linkedin.svg"
+ledgrblog = f"{direc}/pages/appdata/imgs/Ledgr_Logo_F2.png"
+tickerfile = f"{direc}/pages/appdata/tickerlist_y.csv"
 # tickerdb = pd.read_csv(tickerfile)
 tickerlist = tickerlist["SYMBOL"]
 @st.cache_data
