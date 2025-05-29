@@ -17,7 +17,7 @@ direc = os.getcwd()
 @st.cache_data
 def getdata(stock):
     stock = yf.Ticker(stock)
-    df = stock.history(period='max')['Close']
+    df = stock.history(period='max')
     return df
         
 df = getdata(stock)
