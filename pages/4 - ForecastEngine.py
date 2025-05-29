@@ -16,8 +16,8 @@ import plotly.express as px
 import plotly.graph_objects as go
 import streamlit as st
 import yfinance as yf
-import matplotlib as plt
-import seaborn as sns
+# import matplotlib as plt
+# import seaborn as sns
 from prophet import Prophet
 from prophet.plot import plot_plotly, plot_components_plotly
 import os
@@ -36,58 +36,58 @@ with st.sidebar:
 start_date = dt.datetime(2020, 1, 1)
 end_date = dt.datetime.today()
 pathtkr = f"{direc}/pages/appdata/tickerlist_y.csv"
+
 tickerdb = pd.read_csv(pathtkr)
 tickerlist = tickerdb["SYMBOL"]
 
 # Functions & Cached Resources ################################################
-
-
 @st.cache_data
 def getdata(stock):
-    stock = stock + ".NS"
-    try:
-        df = yf.download(stock)
-    except Exception:
-        stock = yf.Ticker(stock)
-        df = stock.history(period='max')
+    stock = yf.Ticker(stock)
+    df = stock.history(period='max')['Close']
     return df
 
-# Pagework 1 - Inputs #########################################################
 
-
-st.title(":Forecast Engine:")
 # Icons and Links ###########################
+
 ytube = f"{direc}/pages/appdata/imgs/ytube.svg"
 fbook = f"{direc}/pages/appdata/imgs/fbook.svg"
 insta = f"{direc}/pages/appdata/imgs/insta.svg"
 linkedin = f"{direc}/pages/appdata/imgs/linkedin.svg"
 ledgrblog = f"{direc}/pages/appdata/imgs/Ledgr_Logo_F1.png"
-fc1, fc2 = st.columns([2, 3])
+fc1, fc2 = st.columns(2)
 with fc1:
-    st.caption("Train Ledgr's AI Engines. Forecast Asset Prices.")
+    st.title(":Forecast Engine:")
+    st.write("Train Ledgr's AI Engines. Forecast Asset Prices.")
     st.info("Chart behaviour, predict price-ranges, observe trajectories.")
 with fc2:
-    st.video("https://youtu.be/tqOWAGEnKKQ?si=pocYLn6vpCSxXvPy")
+    st.video('https://youtu.be/tqOWAGEnKKQ?si=yW1nz3AVFKvUxGjA')
 st.write("    -----------------------------------------------------------    ")
-stock = st.selectbox("Please Select a Security Symbol", tickerlist)
+st.subheader("User Inputs")
+stock = st.selectbox("Please Select a Security Symbol for further analyses: ",
+tickerlist)
+stock = stock + ".NS"
 
 df = getdata(stock)
-ind = df.index
-ind = ind.tz_convert(None)
-open = df['Open']
-hi = df['High']
-lo = df['Low']
-close = df['Close']
-prof_df_close = pd.DataFrame({"ds": ind, "y": 'Close'}, index=ind)
-prof_df_close = prof_df_close.reset_index()
-prof_df_close
+df.reset_index([0])
+# df
 
-# Pagework 2 - Forecasting  ###################################################
+
+# ind = df.index
+# ind = ind.tz_convert(None)
+# open = df['Open']
+# hi = df['High']
+# lo = df['Low']
+close = df['Close']
+prof_df_close = pd.DataFrame({"ds": ind, "y": close})
+# prof_df_close
+# prof_df_close = prof_df_close.reset_index()
+prof_df_close
 
 m = Prophet()
 
 m.fit(prof_df_close)
-future_year = m.make_future_dataframe(periods=150)
+future_year = m.make_future_dataframe(periods=400)
 forecast_year = m.predict(future_year)
 m.plot(forecast_year)
 m.plot_components(forecast_year)
@@ -95,6 +95,7 @@ a = plot_plotly(m, forecast_year)
 a.update_xaxes(title="Timeline", visible=True, showticklabels=True)
 a.update_yaxes(title="Predicted Prices (INR)", visible=True,
                showticklabels=True)
+a.update_traces(marker_color="red", selector=dict(mode='markers'))
 b = plot_components_plotly(m, forecast_year)
 b.update_xaxes(title="Timeline", visible=True, showticklabels=True)
 b.update_yaxes(title="Predicted Prices (INR)", visible=True,
@@ -113,6 +114,8 @@ c.update_layout(legend=dict(
     y=1.02,
     xanchor="right", x=1
     ))
+st.write("  ---------------------------------------------------------------  ")
+
 k1, k2, k3 = st.columns([4, 3, 4])
 with k1:
     st.write(" ")
@@ -120,17 +123,15 @@ with k2:
     st.subheader("Forecast Plot")
 with k3:
     st.write(" ")
-st.write("  ---------------------------------------------------------------  ")
+
 with st.container():
     st.plotly_chart(a, use_container_width=True)
-    with st.expander("Get Forecast Data Here!"):
-        st.write(forecast_year.iloc[-150:])
-        st.write(forecast_year.iloc[-100:])
-st.write("  ---------------------------------------------------------------  ")
 with st.container():
     st.plotly_chart(c, use_container_width=True)
+
+st.write("  ---------------------------------------------------------------  ")
 with st.container():
-    j1, j2, j3 = st.columns([3, 5, 3])
+    j1, j2, j3 = st.columns([3, 4, 3])
     with j1:
         st.write(" ")
     with j2:
@@ -141,27 +142,31 @@ with st.container():
 st.plotly_chart(b, use_container_width=True)
 
 st.write("  ---------------------------------------------------------------  ")
-url = "https://www.alphaledgr.com/blog"
-
-column1, column2, column3, column4, column5 = st.columns([1,1,1,2,1])
+url_ytube = "https://www.youtube.com/@LedgrInc"
+url_fb = "https://www.facebook.com/share/1BnXaYvRzV/"
+url_insta ='https://www.instagram.com/alphaledgr/'
+url_blog = 'https://www.alphaledgr.com/Blog'
+url_linkedin = "https://www.linkedin.com/company/ledgrapp/"
+st.write("  ---------------------------------------------------------------  ")
+column1, column2, column3, column4, column5 = st.columns([1, 1, 1, 2 , 1])
 with column1:
-    st.image(ytube, 'Ledgr\'s YouTube Channel')
+    st.image(ytube, '[Ledgr\'s YouTube Channel](%s)' % url_ytube)
 with column2:
-    st.image(fbook, 'Ledgr\'s FaceBook Page')
+    st.image(fbook, '[Ledgr\'s FaceBook Page ](%s)' % url_fb)
 with column3:
-    st.image(linkedin,  'Ledgr\'s LinkedIn Page')
+    st.image(linkedin,  '[Our LinkedIn Page ](%s)' % url_linkedin)
 with column4:
     st.write(" ")
-    st.image(ledgrblog,  'Ledgr\'s own Blog', use_container_width=True)
-st.write("check out this [link](%s)" % url)
-st.markdown("check out this [link](%s)" % url)
+    st.image(ledgrblog,  '[Ledgr\'s Blog ](%s)' % url_blog)
+    st.write(" ")
 with column5:
-    st.image(insta, 'Check out Ledgr\'s Instagram')
-#    st.image(insta, 'Ledgr @ Instagram')
-ft1, ft2, ft3 = st.columns([1, 5, 1])
-with ft1:
-    st.write(" ")
-with ft2:
-    st.caption(": | 2025 - 2026 | All Rights Reserved  ©  Ledgr Inc. | www.alphaLedgr.com | alphaLedgr Technologies Ltd. :")
-with ft3:
-    st.write(" ")
+    st.image(insta,  '[Ledgr\'s @ Instagram ](%s)' % url_insta)
+# # ###################################################################
+with st.container():
+    f9, f10, f11 = st.columns([1, 5, 1])
+    with f9:
+        st.write(" ")
+    with f10:
+        st.caption(": | 2025 - 2026 | All Rights Resrved  ©  Ledgr Inc. | www.alphaLedgr.com | alphaLedgr Technologies Ltd. :")
+    with f11:
+        st.write(" ")
