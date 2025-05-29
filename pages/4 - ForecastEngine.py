@@ -69,11 +69,11 @@ tickerlist)
 stock = stock + ".NS"
 
 df = getdata(f'{stock}')
-df.reset_index([0])
-# df
+#df.reset_index([0])
+ df
 
 
-# ind = df.index
+ind = df.index
 # ind = ind.tz_convert(None)
 # open = df['Open']
 # hi = df['High']
