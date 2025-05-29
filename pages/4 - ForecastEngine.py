@@ -63,6 +63,8 @@ with fc1:
 with fc2:
     st.video('https://youtu.be/tqOWAGEnKKQ?si=yW1nz3AVFKvUxGjA')
 st.write("    -----------------------------------------------------------    ")
+st.header("This page is under the works and shall be open soon!")
+
 st.subheader("User Inputs")
 stock = st.selectbox("Please Select a Security Symbol for further analyses: ",
 tickerlist)
@@ -70,7 +72,7 @@ stock = stock + ".NS"
 
 df = getdata(f'{stock}')
 #df.reset_index([0])
- df
+df
 
 
 ind = df.index
