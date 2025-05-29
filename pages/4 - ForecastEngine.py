@@ -13,8 +13,6 @@ import os
 import streamlit as st
 
 direc = os.getcwd()
-
-
 ytube = f"{direc}/pages/appdata/imgs/ytube.svg"
 fbook = f"{direc}/pages/appdata/imgs/fbook.svg"
 insta = f"{direc}/pages/appdata/imgs/insta.svg"
@@ -48,7 +46,7 @@ df = getdata(f'{stock}')
 st.write(df)
 
 
-ind = df.index
+# ind = df.index
 # ind = ind.tz_convert(None)
 # open = df['Open']
 # hi = df['High']
