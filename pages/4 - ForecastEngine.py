@@ -19,9 +19,8 @@ tickerfile = f"{direc}/pages/appdata/tickerlist_y.csv"
 tickerdb = pd.read_csv(tickerfile)
 tickerlist = tickerdb["SYMBOL"]
 st.subheader("User Inputs")
-stock = st.selectbox("Please Select a Security Symbol for further analyses: ",
-                     tickerlist)
-stock = stock + ".NS"
+stock2 = st.selectbox("Please Select a Security Symbol for further analyses: ", tickerlist)
+stock = stock2 + ".NS"
 
 df = getdata(f'{stock}')
 # df.reset_index([0])
