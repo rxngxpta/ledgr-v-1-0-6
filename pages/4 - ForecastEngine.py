@@ -1,4 +1,4 @@
-    # __author__ = 'R. Sengupta | r_xn'
+# __author__ = 'R. Sengupta | r_xn'
 # __copyright__ = 'Copyright 2023, Ledgr | www.alphaLedgr.com'
 # __credits__ = ['r_xn, s.sengupta, adasgupta@gmail.com']
 # __license__ = 'Ledgr | alphaledgr.com'
@@ -138,18 +138,22 @@ with st.container():
 st.plotly_chart(b, use_container_width=True)
 
 st.write("  ---------------------------------------------------------------  ")
-url = "https://www.alphaledgr.com/blog"
 
+url_ytube = "https://www.youtube.com/@LedgrInc"
+url_fb = "https://www.facebook.com/share/1BnXaYvRzV/"
+url_insta ='https://www.instagram.com/alphaledgr/'
+url_blog = 'https://www.alphaledgr.com/Blog'
+url_linkedin = "https://www.linkedin.com/company/ledgrapp/"
 column1, column2, column3, column4, column5 = st.columns([1,1,1,2,1])
 with column1:
-    st.image(ytube, 'Ledgr\'s YouTube Channel')
+    st.image(ytube, "(Ledgr\'s YouTube Channel(%s)", url_ytube)
 with column2:
-    st.image(fbook, 'Ledgr\'s FaceBook Page')
+    st.image(fbook, "(Ledgr\'s FaceBook Page(%s"), url_fb)
 with column3:
-    st.image(linkedin,  'Ledgr\'s LinkedIn Page')
+    st.image(linkedin,  ("Ledgr\'s LinkedIn Page(%s)", url_linkedin)
 with column4:
     st.write(" ")
-    st.image(ledgrblog,  'Ledgr\'s own Blog', use_container_width=True)
+    st.image(ledgrblog,  ('Ledgr\'s own Blog(%s)', url_ledgrblog)
 st.write("check out this [link](%s)" % url)
 st.markdown("check out this [link](%s)" % url)
 with column5:
