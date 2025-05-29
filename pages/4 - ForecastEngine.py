@@ -113,13 +113,13 @@ with st.container():
         st.write(" ")
 
 st.plotly_chart(b, use_container_width=True)
-
-
-
-
-
-
-# #######################################################################
+# #####################################################################
+url_ytube = "https://www.youtube.com/@LedgrInc"
+url_fb = "https://www.facebook.com/share/1BnXaYvRzV/"
+url_insta ='https://www.instagram.com/alphaledgr/'
+url_blog = 'https://www.alphaledgr.com/Blog'
+url_linkedin = "https://www.linkedin.com/company/ledgrapp/"
+# #############################################################################
 column1, column2, column3, column4, column5 = st.columns([1, 1, 1, 2 , 1])
 with column1:
     st.image(ytube, '[Ledgr\'s YouTube Channel](%s)' % url_ytube)
