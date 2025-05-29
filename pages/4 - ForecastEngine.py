@@ -16,8 +16,8 @@ import plotly.express as px
 import plotly.graph_objects as go
 import streamlit as st
 import yfinance as yf
-# import matplotlib as plt
-# import seaborn as sns
+import matplotlib as plt
+import seaborn as sns
 from prophet import Prophet
 from prophet.plot import plot_plotly, plot_components_plotly
 import os
@@ -36,15 +36,17 @@ with st.sidebar:
 start_date = dt.datetime(2020, 1, 1)
 end_date = dt.datetime.today()
 pathtkr = f"{direc}/pages/appdata/tickerlist_y.csv"
-
 tickerdb = pd.read_csv(pathtkr)
 tickerlist = tickerdb["SYMBOL"]
 
 # Functions & Cached Resources ################################################
 @st.cache_data
 def getdata(stock):
-    stock = yf.Ticker(stock)
-    df = stock.history(period='max')
+    try:
+        df = yf.download(stock)
+    except Exception:
+        stock = yf.Ticker(stock)
+        df = stock.history(period='max')
     return df
 
 
