@@ -16,8 +16,8 @@ import plotly.express as px
 import plotly.graph_objects as go
 import streamlit as st
 import yfinance as yf
-import matplotlib as plt
-import seaborn as sns
+# import matplotlib as plt
+# import seaborn as sns
 from prophet import Prophet
 from prophet.plot import plot_plotly, plot_components_plotly
 import os
@@ -43,10 +43,8 @@ tickerlist = tickerdb["SYMBOL"]
 # Functions & Cached Resources ################################################
 @st.cache_data
 def getdata(stock):
-    stock = stock + ".NS"
     stock = yf.Ticker(stock)
-    df = stock.history(period='max')
-    df = df(headers=[0])
+    df = stock.history(period='max')['Close']
     return df
 
 
@@ -56,7 +54,7 @@ ytube = f"{direc}/pages/appdata/imgs/ytube.svg"
 fbook = f"{direc}/pages/appdata/imgs/fbook.svg"
 insta = f"{direc}/pages/appdata/imgs/insta.svg"
 linkedin = f"{direc}/pages/appdata/imgs/linkedin.svg"
-ledgrblog = f"{direc}/pages/appdata/imgs/Ledgr_Logo_F2.png"
+ledgrblog = f"{direc}/pages/appdata/imgs/Ledgr_Logo_F1.png"
 fc1, fc2 = st.columns(2)
 with fc1:
     st.title(":Forecast Engine:")
@@ -65,13 +63,10 @@ with fc1:
 with fc2:
     st.video('https://youtu.be/tqOWAGEnKKQ?si=yW1nz3AVFKvUxGjA')
 st.write("    -----------------------------------------------------------    ")
-with st.form("Select a Security Ticker "):
-    stock = st.selectbox("Please Select a Security Symbol for further analyses: ",
-    tickerlist)
-    submitted = st.form_submit_button("Proceed >>>")
-    if submitted:
-        pass
-
+st.subheader("User Inputs")
+stock = st.selectbox("Please Select a Security Symbol for further analyses: ",
+tickerlist)
+stock = stock + ".NS"
 
 df = getdata(stock)
 df.reset_index([0])
@@ -80,13 +75,13 @@ df.reset_index([0])
 
 # ind = df.index
 # ind = ind.tz_convert(None)
-open = df['Open']
-hi = df['High']
-lo = df['Low']
+# open = df['Open']
+# hi = df['High']
+# lo = df['Low']
 close = df['Close']
 prof_df_close = pd.DataFrame({"ds": ind, "y": close})
 # prof_df_close
-prof_df_close = prof_df_close.reset_index()
+# prof_df_close = prof_df_close.reset_index()
 prof_df_close
 
 m = Prophet()
@@ -153,7 +148,7 @@ url_insta ='https://www.instagram.com/alphaledgr/'
 url_blog = 'https://www.alphaledgr.com/Blog'
 url_linkedin = "https://www.linkedin.com/company/ledgrapp/"
 st.write("  ---------------------------------------------------------------  ")
-column1, column2, column3, column4, column5 = st.columns([1, 1, 1, 1, 1])
+column1, column2, column3, column4, column5 = st.columns([1, 1, 1, 2 , 1])
 with column1:
     st.image(ytube, '[Ledgr\'s YouTube Channel](%s)' % url_ytube)
 with column2:
