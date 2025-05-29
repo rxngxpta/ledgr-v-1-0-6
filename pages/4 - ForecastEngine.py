@@ -76,7 +76,7 @@ st.write("2. ", df)
 
 
 ind = df.index
-# ind = ind.tz_convert(None)
+ind.tz_localize('Asia/Calcutta')
 open = df['Open']
 hi = df['High']
 lo = df['Low']
