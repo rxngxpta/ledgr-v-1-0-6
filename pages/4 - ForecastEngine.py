@@ -11,6 +11,8 @@ from prophet import Prophet
 from prophet.plot import plot_plotly, plot_components_plotly
 import os
 import streamlit as st
+
+direc = os.cwd()
 ytube = f'{direc}/pages/appdata/imgs/ytube.svg'
 fbook = f'{direc}/pages/appdata/imgs/fbook.svg'
 insta = f'{direc}/pages/appdata/imgs/insta.svg'
