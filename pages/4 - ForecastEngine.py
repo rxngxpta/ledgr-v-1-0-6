@@ -30,7 +30,7 @@ def getdata(stock):
     return df
 
 st.subheader("User Inputs")
-with st.form():
+with st.form("user_inputs"):
     stock2 = st.selectbox("Please Select a Security Symbol for further analyses: ", tickerlist)
     submitted = st.form_submit_button("Proceed")
     if submitted:
