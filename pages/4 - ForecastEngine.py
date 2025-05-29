@@ -63,7 +63,7 @@ with fc1:
 with fc2:
     st.video('https://youtu.be/tqOWAGEnKKQ?si=yW1nz3AVFKvUxGjA')
 st.write("    -----------------------------------------------------------    ")
-st.header("This page is under the works and shall be open soon!")
+st.subheader("This page is under the works and shall be open soon!")
 st.write("  ---------------------------------------------------------------  ")
 url_ytube = "https://www.youtube.com/@LedgrInc"
 url_fb = "https://www.facebook.com/share/1BnXaYvRzV/"
