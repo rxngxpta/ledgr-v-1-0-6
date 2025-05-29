@@ -16,8 +16,8 @@ import plotly.express as px
 import plotly.graph_objects as go
 import streamlit as st
 import yfinance as yf
-import matplotlib as plt
-import seaborn as sns
+# import matplotlib as plt
+# import seaborn as sns
 from prophet import Prophet
 from prophet.plot import plot_plotly, plot_components_plotly
 import os
@@ -36,17 +36,15 @@ with st.sidebar:
 start_date = dt.datetime(2020, 1, 1)
 end_date = dt.datetime.today()
 pathtkr = f"{direc}/pages/appdata/tickerlist_y.csv"
+
 tickerdb = pd.read_csv(pathtkr)
 tickerlist = tickerdb["SYMBOL"]
 
 # Functions & Cached Resources ################################################
 @st.cache_data
 def getdata(stock):
-    try:
-        df = yf.download(stock)
-    except Exception:
-        stock = yf.Ticker(stock)
-        df = stock.history(period='max')
+    stock = yf.Ticker(stock)
+    df = stock.history(period='max')['Close']
     return df
 
 
@@ -71,21 +69,20 @@ tickerlist)
 stock = stock + ".NS"
 
 df = getdata(stock)
-df.reset_index()
-st.write("2. ", df)
+df.reset_index([0])
+# df
 
 
-ind = df.index
-ind = ind.tz_localize('Asia/Calcutta')
-open = df['Open']
-hi = df['High']
-lo = df['Low']
+# ind = df.index
+# ind = ind.tz_convert(None)
+# open = df['Open']
+# hi = df['High']
+# lo = df['Low']
 close = df['Close']
 prof_df_close = pd.DataFrame({"ds": ind, "y": close})
-
-st.write("3.", prof_df_close)
-prof_df_close = prof_df_close.reset_index(drop=True, inplace=True)
-st.write("4.",prof_df_close)
+# prof_df_close
+# prof_df_close = prof_df_close.reset_index()
+prof_df_close
 
 m = Prophet()
 
