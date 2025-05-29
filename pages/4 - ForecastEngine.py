@@ -45,8 +45,11 @@ tickerlist = tickerdb["SYMBOL"]
 @st.cache_data
 def getdata(stock):
     stock = stock + ".NS"
-    stock = yf.Ticker(stock)
-    df = stock.history(period='max')
+    try:
+        df = yf.download(stock)
+    except Exception:
+        stock = yf.Ticker(stock)
+        df = stock.history(period='max')
     return df
 
 # Pagework 1 - Inputs #########################################################
@@ -76,8 +79,8 @@ hi = df['High']
 lo = df['Low']
 close = df['Close']
 prof_df_close = pd.DataFrame({"ds": ind, "y": 'Close'}, index=ind)
-prof_df_close
 prof_df_close = prof_df_close.reset_index()
+prof_df_close
 
 # Pagework 2 - Forecasting  ###################################################
 
