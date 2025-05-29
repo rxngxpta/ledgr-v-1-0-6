@@ -69,15 +69,15 @@ tickerlist)
 stock = stock + ".NS"
 
 df = getdata(stock)
-df.reset_index([0])
-# df
+# df.reset_index([0])
+st.write("2. ", df)
 
 
-# ind = df.index
-# ind = ind.tz_convert(None)
-# open = df['Open']
-# hi = df['High']
-# lo = df['Low']
+ind = df.index
+ind = ind.tz_convert(None)
+open = df['Open']
+hi = df['High']
+lo = df['Low']
 close = df['Close']
 prof_df_close = pd.DataFrame({"ds": ind, "y": close})
 # prof_df_close
