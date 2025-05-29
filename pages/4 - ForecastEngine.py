@@ -25,6 +25,14 @@ st.subheader("User Inputs")
 stock2 = st.selectbox("Please Select a Security Symbol for further analyses: ", tickerlist)
 stock = stock2 + ".NS"
 
+# Functions & Cached Resources ################################################
+@st.cache_data
+def getdata(stock):
+    stock = yf.Ticker(stock)
+    df = stock.history(period='max')['Close']
+    return df
+
+
 df = getdata(f'{stock}')
 # df.reset_index([0])
 df
