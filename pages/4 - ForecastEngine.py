@@ -76,15 +76,15 @@ st.write("2. ", df)
 
 
 ind = df.index
-ind = ind.tz_convert(None)
+# ind = ind.tz_convert(None)
 open = df['Open']
 hi = df['High']
 lo = df['Low']
 close = df['Close']
 prof_df_close = pd.DataFrame({"ds": ind, "y": close})
-# prof_df_close
+st.write("3.", prof_df_close)
 prof_df_close = prof_df_close.reset_index(drop=True, inplace=True)
-prof_df_close
+st.write("4.",prof_df_close)
 
 m = Prophet()
 
