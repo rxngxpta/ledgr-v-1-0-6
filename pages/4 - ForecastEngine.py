@@ -44,7 +44,6 @@ with st.form("user_inputs"):
         # Functions & Cached Resources ################################################
         # df.reset_index([0])
         st.write(df)
-        
         # ################################################################################
         ind = df.index
         ind = ind.tz_convert(None)
@@ -56,9 +55,7 @@ with st.form("user_inputs"):
         # prof_df_close
         # prof_df_close = prof_df_close.reset_index()
         prof_df_close
-        
         m = Prophet()
-        
         m.fit(prof_df_close)
         future_year = m.make_future_dataframe(periods=200)
         forecast_year = m.predict(future_year)
