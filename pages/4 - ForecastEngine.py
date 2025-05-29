@@ -43,11 +43,12 @@ with st.form("user_inputs"):
 st.write(stock)
 
 # Functions & Cached Resources ################################################
-df = getdata(f'{stock}')
+stock_ticker = yf.ticker(stock)
+st.write(stock_ticker)
 # df.reset_index([0])
 st.write(df)
 
-
+# ################################################################################
 # ind = df.index
 # ind = ind.tz_convert(None)
 # open = df['Open']
