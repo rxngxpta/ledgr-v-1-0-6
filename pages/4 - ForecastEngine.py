@@ -47,12 +47,12 @@ with st.form("user_inputs"):
 st.write(df)
 
 # ################################################################################
-# ind = df.index
-# ind = ind.tz_convert(None)
-# open = df['Open']
-# hi = df['High']
-# lo = df['Low']
-close = df['Close']
+ind = df.index
+ind = ind.tz_convert(None)
+open = df['Open'].values
+hi = df['High'].values
+lo = df['Low'].values
+close = df['Close'].values
 prof_df_close = pd.DataFrame({"ds": ind, "y": close})
 # prof_df_close
 # prof_df_close = prof_df_close.reset_index()
