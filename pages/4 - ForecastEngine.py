@@ -41,75 +41,73 @@ with st.form("user_inputs"):
         stock = stock2 + ".NS"
         st.write(stock)
         df = getdata(stock)
-        pass
-
-# Functions & Cached Resources ################################################
-# df.reset_index([0])
-st.write(df)
-
-# ################################################################################
-ind = df.index
-ind = ind.tz_convert(None)
-open = df['Open'].values
-hi = df['High'].values
-lo = df['Low'].values
-close = df['Close'].values
-prof_df_close = pd.DataFrame({"ds": ind, "y": close})
-# prof_df_close
-# prof_df_close = prof_df_close.reset_index()
-prof_df_close
-
-m = Prophet()
-
-m.fit(prof_df_close)
-future_year = m.make_future_dataframe(periods=200)
-forecast_year = m.predict(future_year)
-m.plot(forecast_year)
-m.plot_components(forecast_year)
-a = plot_plotly(m, forecast_year)
-a.update_xaxes(title="Timeline", visible=True, showticklabels=True)
-a.update_yaxes(title="Predicted Prices (INR)", visible=True,
-               showticklabels=True)
-a.update_traces(marker_color="red", selector=dict(mode='markers'))
-b = plot_components_plotly(m, forecast_year)
-b.update_xaxes(title="Timeline", visible=True, showticklabels=True)
-b.update_yaxes(title="Predicted Prices (INR)", visible=True,
-               showticklabels=True)
-dx = forecast_year.filter(["ds", 'yhat'], axis=1)
-dx = dx.set_index(['ds'])
-dx.rename(columns={'yhat': 'Predictions'}, inplace=True)
-c = px.line(dx)
-c.add_trace(go.Scatter(x=dx.index, y=df['Close'], name='Close'))
-c.update_xaxes(title='Timeline', showticklabels=True, visible=True)
-c.update_yaxes(title="Price Data", showticklabels=True, visible=True)
-c.update_layout(legend=dict(
-    orientation="h",
-    entrywidth=100,
-    yanchor="bottom",
-    y=1.02,
-    xanchor="right", x=1
-))
-st.write("  ---------------------------------------------------------------  ")
-k1, k2, k3 = st.columns([4, 3, 4])
-with k1:
-    st.write(" ")
-with k2:
-    st.subheader("Forecast Plot")
-with k3:
-    st.write(" ")
-
-st.plotly_chart(a, use_container_width=True)
-st.write(" ----------------------------------------------------------------- ")
-st.plotly_chart(c, use_container_width=True)
-st.write("  ---------------------------------------------------------------  ")
-j1, j2, j3 = st.columns([3, 4, 3])
-with j1:
-    st.write(" ")
-with j2:
-    st.subheader(f"{stock} Price Trajectory")
-with j3:
-    st.write(" ")
-st.plotly_chart(b, use_container_width=True)
+        # Functions & Cached Resources ################################################
+        # df.reset_index([0])
+        st.write(df)
+        
+        # ################################################################################
+        ind = df.index
+        ind = ind.tz_convert(None)
+        open = df['Open'].values
+        hi = df['High'].values
+        lo = df['Low'].values
+        close = df['Close'].values
+        prof_df_close = pd.DataFrame({"ds": ind, "y": close})
+        # prof_df_close
+        # prof_df_close = prof_df_close.reset_index()
+        prof_df_close
+        
+        m = Prophet()
+        
+        m.fit(prof_df_close)
+        future_year = m.make_future_dataframe(periods=200)
+        forecast_year = m.predict(future_year)
+        m.plot(forecast_year)
+        m.plot_components(forecast_year)
+        a = plot_plotly(m, forecast_year)
+        a.update_xaxes(title="Timeline", visible=True, showticklabels=True)
+        a.update_yaxes(title="Predicted Prices (INR)", visible=True,
+                       showticklabels=True)
+        a.update_traces(marker_color="red", selector=dict(mode='markers'))
+        b = plot_components_plotly(m, forecast_year)
+        b.update_xaxes(title="Timeline", visible=True, showticklabels=True)
+        b.update_yaxes(title="Predicted Prices (INR)", visible=True,
+                       showticklabels=True)
+        dx = forecast_year.filter(["ds", 'yhat'], axis=1)
+        dx = dx.set_index(['ds'])
+        dx.rename(columns={'yhat': 'Predictions'}, inplace=True)
+        c = px.line(dx)
+        c.add_trace(go.Scatter(x=dx.index, y=df['Close'], name='Close'))
+        c.update_xaxes(title='Timeline', showticklabels=True, visible=True)
+        c.update_yaxes(title="Price Data", showticklabels=True, visible=True)
+        c.update_layout(legend=dict(
+            orientation="h",
+            entrywidth=100,
+            yanchor="bottom",
+            y=1.02,
+            xanchor="right", x=1
+        ))
+        st.write("  ---------------------------------------------------------------  ")
+        k1, k2, k3 = st.columns([4, 3, 4])
+        with k1:
+            st.write(" ")
+        with k2:
+            st.subheader("Forecast Plot")
+        with k3:
+            st.write(" ")
+        
+        st.plotly_chart(a, use_container_width=True)
+        st.write(" ----------------------------------------------------------------- ")
+        st.plotly_chart(c, use_container_width=True)
+        st.write("  ---------------------------------------------------------------  ")
+        j1, j2, j3 = st.columns([3, 4, 3])
+        with j1:
+            st.write(" ")
+        with j2:
+            st.subheader(f"{stock} Price Trajectory")
+        with j3:
+            st.write(" ")
+        st.plotly_chart(b, use_container_width=True)
 # #####################################################################
 url_ytube = "https://www.youtube.com/@LedgrInc"
 url_fb = "https://www.facebook.com/share/1BnXaYvRzV/"
