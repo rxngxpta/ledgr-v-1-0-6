@@ -71,7 +71,7 @@ tickerlist)
 stock = stock + ".NS"
 
 df = getdata(stock)
-df.reset_index([0])
+df.reset_index()
 st.write("2. ", df)
 
 
