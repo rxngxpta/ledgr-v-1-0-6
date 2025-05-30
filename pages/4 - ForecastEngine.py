@@ -64,7 +64,7 @@ with fc1:
     st.caption("Train Ledgr's AI Engines. Forecast Asset Prices.")
     st.info("Chart behaviour, predict price-ranges, observe trajectories.")
 with fc2:
-    st.video("https://youtu.be/QVGy-AnBR4I?si=nU0Y6hgRjNDatDjN")
+    st.video('https://youtu.be/QVGy-AnBR4I?si=nU0Y6hgRjNDatDjN')
 st.write("    -----------------------------------------------------------    ")
 stock = st.selectbox("Please Select a Security Symbol", tickerlist)
 
