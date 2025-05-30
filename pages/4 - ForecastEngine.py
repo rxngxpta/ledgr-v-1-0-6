@@ -36,8 +36,6 @@ with st.sidebar:
 start_date = dt.datetime(2020, 1, 1)
 end_date = dt.datetime.today()
 pathtkr = f"{direc}/pages/appdata/tickerlist_y.csv"
-vidfile4 = open(f"{direc}/pages/appdata/imgs/Forecast-Anime.mp4", "rb")
-video_bytes4 = vidfile4.read()
 tickerdb = pd.read_csv(pathtkr)
 tickerlist = tickerdb["Symbol"]
 
@@ -66,7 +64,7 @@ with fc1:
     st.caption("Train Ledgr's AI Engines. Forecast Asset Prices.")
     st.info("Chart behaviour, predict price-ranges, observe trajectories.")
 with fc2:
-    st.video(video_bytes4)
+    st.video("https://youtu.be/QVGy-AnBR4I?si=nU0Y6hgRjNDatDjN")
 st.write("    -----------------------------------------------------------    ")
 stock = st.selectbox("Please Select a Security Symbol", tickerlist)
 
