@@ -68,7 +68,7 @@ stock = st.selectbox("Please Select a Security Symbol", tickerlist)
 
 df = getdata(stock)
 ind = df.index
-# ind = ind.tz_convert(None)
+ind = ind.tz_convert(None)
 open = df['Open']
 hi = df['High']
 lo = df['Low']
