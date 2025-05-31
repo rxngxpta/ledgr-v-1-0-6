@@ -74,9 +74,9 @@ lo = df['Low']
 close = df['Close']
 prof_df_close = pd.DataFrame({"ds": ind, "y": close})
 #prof_df_close = prof_df_close.reset_index(drop=True, inplace=True)
-
+pdf1 = pd.DataFrame({"y": close})
 st.write(prof_df_close)
-
+st.write(pdf1)
 # Pagework 2 - Forecasting  ###################################################
 
 m = Prophet()
