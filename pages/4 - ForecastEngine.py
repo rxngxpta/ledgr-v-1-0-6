@@ -73,7 +73,7 @@ hi = df['High']
 lo = df['Low']
 close = df['Close']
 prof_df_close = pd.DataFrame({"y": close})
-prof_df_close = prof_df_close.reset_index()
+prof_df_close = prof_df_close.reset_index(drop=True, inplace=True)
 
 st.write(prof_df_close)
 
