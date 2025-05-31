@@ -1,4 +1,4 @@
-    # __author__ = 'R. Sengupta | r_xn'
+# __author__ = 'R. Sengupta | r_xn'
 # __copyright__ = 'Copyright 2023, Ledgr | www.alphaLedgr.com'
 # __credits__ = ['r_xn, s.sengupta, adasgupta@gmail.com']
 # __license__ = 'Ledgr | alphaledgr.com'
@@ -35,9 +35,7 @@ with st.sidebar:
 # Variables & Declarations ####################################################
 start_date = dt.datetime(2020, 1, 1)
 end_date = dt.datetime.today()
-pathtkr = f"{direc}/pages/appdata/tickerlist_y.csv"
-tickerdb = pd.read_csv(pathtkr)
-tickerlist = tickerdb["SYMBOL"]
+tickerlist = pd.read_csv(f"{direc}/pages/appdata/tickerlist_y.csv")["SYMBOL"]
 
 # Functions & Cached Resources ################################################
 
