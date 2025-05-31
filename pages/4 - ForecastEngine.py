@@ -67,12 +67,12 @@ st.write("    -----------------------------------------------------------    ")
 stock = st.selectbox("Please Select a Security Symbol", tickerlist)
 
 df = getdata(stock)
-ind = df.index.tz_convert(None)
+ind = df.index.tz_localize(None)
 open = df['Open']
 hi = df['High']
 lo = df['Low']
 close = df['Close']
-prof_df_close = pd.DataFrame({"ds": ind, "y": close}, index = "ds")
+prof_df_close = pd.DataFrame({"y": close})
 prof_df_close = prof_df_close.reset_index()
 
 st.write(prof_df_close)
