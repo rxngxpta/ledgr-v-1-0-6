@@ -80,7 +80,7 @@ st.write(prof_df_close)
 
 m = Prophet()
 
-m.fit(prof_df_close)
+m.fit(prof_df_close["ds", "y"])
 future_year = m.make_future_dataframe(periods=150)
 forecast_year = m.predict(future_year)
 m.plot(forecast_year)
