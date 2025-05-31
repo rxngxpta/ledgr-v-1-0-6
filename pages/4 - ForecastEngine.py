@@ -74,7 +74,7 @@ lo = df['Low']
 close = df['Close']
 prof_df_close = pd.DataFrame({"ds": ind, "y": close})
 prof_df_close.reset_index(drop=True)
-prof_df_close.filter(items=["ds", "y"])
+prof_df_close.filter(items=["ds", "y"], axis=1)
 st.write(prof_df_close)
 # Pagework 2 - Forecasting  ###################################################
 
